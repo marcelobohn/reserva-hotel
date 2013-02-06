@@ -1,0 +1,30 @@
+<div class="divRecurso">Registros<%= link_to image_tag("Add.png", :border=>0, :align => :right), new_registry_path %></div>
+
+<table cellpadding="2" cellspacing="0">
+  <tr>
+    <th>Room</th>
+    <th>Booking</th>
+    <th>Entry</th>
+    <th>Exit</th>
+    <th>Client</th>
+    <th>Phone</th>
+    <th>Obs</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @registries.each do |registry| %>
+  <tr>
+    <td><%= link_to registry.room.name, registry %></td>
+    <td><%= registry.booking %></td>
+    <td><%= registry.entry.strftime("%d/%m/%Y") %></td>
+    <td><%= registry.exit.strftime("%d/%m/%Y") %></td>
+    <td><%= registry.client %></td>
+    <td><%= registry.phone %></td>
+    <td><%= registry.obs %></td>
+    <td><%= link_to image_tag("Modify.png", :border=>0), edit_registry_path(registry) %></td>
+    <td><%= link_to image_tag("Delete.png", :border=>0), registry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>

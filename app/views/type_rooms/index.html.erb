@@ -1,0 +1,17 @@
+<div class="divRecurso">Tipos de quarto<%= link_to image_tag("Add.png", :border=>0, :align => :right), new_type_room_path %></div>
+
+<table cellpadding="2" cellspacing="0">
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @type_rooms.each do |type_room| %>
+  <tr>
+    <td><%= link_to type_room.name, type_room %></td>
+    <td><%= link_to image_tag("Modify.png", :border=>0), edit_type_room_path(type_room) %></td>
+    <td><%= link_to image_tag("Delete.png", :border=>0), type_room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>

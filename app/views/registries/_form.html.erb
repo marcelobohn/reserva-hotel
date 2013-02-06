@@ -1,0 +1,24 @@
+<%= simple_form_for(@registry) do |f| %>
+  <% if @registry.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@registry.errors.count, "error") %> prohibited this registry from being saved:</h2>
+
+      <ul>
+      <% @registry.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.label :room_id %>
+  <%= f.collection_select(:room_id, Room.all, :id, :name) %>  <br />
+  <%= f.input :booking_id %>    
+  <%= f.label :entry %>
+  <%= f.date_select :entry, {:order => [:day, :month, :year]} %><br />
+  <%= f.label :exit %>
+  <%= f.date_select :exit, {:order => [:day, :month, :year]} %>
+  <%= f.input :client %>  
+  <%= f.input :phone %>  
+  <%= f.input :obs %>  
+  <%= f.button :submit %>  
+<% end %>

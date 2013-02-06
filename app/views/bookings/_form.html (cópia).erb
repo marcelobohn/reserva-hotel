@@ -1,0 +1,43 @@
+<%= simple_form_for(@booking) do |f| %>
+  <% if @booking.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+
+      <ul>
+      <% @booking.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label :room_id %>
+  <%= f.collection_select(:room_id, Room.all, :id, :name) %>  
+  <div class="field">
+    <%= f.label :room_id %><br />
+    <%= f.select :room_id, Room.all.map { |e| [e.name, e.id] } %>
+  </div>
+  <div class="field">
+    <%= f.label :entry %><br />
+    <%= f.date_select :entry, {:order => [:day, :month, :year]} %>
+  </div>
+  <div class="field">
+    <%= f.label :exit %><br />
+    <%= f.date_select :exit, {:order => [:day, :month, :year]} %>
+  </div>
+  <div class="field">
+    <%= f.label :client %><br />
+    <%= f.text_field :client %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :obs %><br />
+    <%= f.text_field :obs %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

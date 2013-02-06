@@ -1,0 +1,25 @@
+<div class="divRecurso"><%= t("activerecord.models.room")%><%= link_to image_tag("Add.png", :border=>0, :align => :right), new_room_path %></div>
+
+<table cellpadding="2" cellspacing="0">
+  <tr>
+    <th>Name</th>
+    <th>Floor</th>
+    <th>Type room</th>
+    <th>Air conditioning</th>
+    <th>Beds</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @rooms.each do |room| %>
+  <tr>
+    <td><%= link_to room.name, room %></td>
+    <td><%= room.floor.name %></td>
+    <td><%= room.type_room.name %></td>
+    <td><%= room.air_conditioning %></td>
+    <td><%= room.beds %></td>
+    <td><%= link_to image_tag("Modify.png", :border=>0), edit_room_path(room) %></td>
+    <td><%= link_to image_tag("Delete.png", :border=>0), room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>

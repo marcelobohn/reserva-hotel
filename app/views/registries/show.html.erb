@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Room:</b>
+  <%= @registry.room.name %>
+</p>
+
+<p>
+  <b>Booking:</b>
+  <%= @registry.booking %>
+</p>
+
+<p>
+  <b>Entry:</b>
+  <%= @registry.entry %>
+</p>
+
+<p>
+  <b>Exit:</b>
+  <%= @registry.exit %>
+</p>
+
+<p>
+  <b>Client:</b>
+  <%= @registry.client %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @registry.phone %>
+</p>
+
+<p>
+  <b>Obs:</b>
+  <%= @registry.obs %>
+</p>
+
+
+<%= link_to 'Edit', edit_registry_path(@registry) %> |
+<%= link_to 'Back', registries_path %>

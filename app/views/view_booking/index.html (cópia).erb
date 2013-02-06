@@ -1,0 +1,32 @@
+<div>
+<%= simple_form_for(:room, :url => { :action => "busca" }, :html => {:method => :get} ) do |f| %>
+  Data: <%= date_select('', ':entry_ini') %><br />
+  <%= text_field('', ':teste') %><br />
+
+<%= #f.input :end_date, :as => :string, :input_html => { :class => 'date_picker' } 
+%>  
+  <%= f.submit "Atualizar" %>
+<% end %>
+</div>
+
+<%= form_tag({}, {:method => :get}) do %>
+  <%= select_tag :new_locale, options_for_select(I18n.available_locales, I18n.locale), :onchange => "this.form.submit();" %>
+<% end %>
+
+<%= form_tag({:action => 'index'}, {:method => :get}) do %>
+  <%= text_field_tag "data_ini" %><br />
+  <%= submit_tag "Filtrar" %>
+<% end %>
+
+<% @rooms.each do |room| %>
+	<div class="room_box"><%= room.name %></div>
+<% end %>
+
+<% a = Booking.new.get_vagas %>
+<% a.each do |room| %>
+	<div class=<%= room['booking_count'].to_i > 0 ? "room_box_ocupped" : "room_box_free" %> > <%= room['name'] + ' - ' + room['booking_count'] %></div>
+<% end %>
+
+<%= Time.now() %><br />
+<%= Time.now.strftime("%D %H:%M") %><br />
+<%= Time.now.strftime("%d/%m/%Y") %>

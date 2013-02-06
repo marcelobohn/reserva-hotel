@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Room:</b>
+  <%= @booking.room.name %>
+</p>
+
+<p>
+  <b>Entry:</b>
+  <%= @booking.entry.strftime("%d/%m/%Y") %>
+</p>
+
+<p>
+  <b>Exit:</b>
+  <%= @booking.exit.strftime("%d/%m/%Y") %>
+</p>
+
+<p>
+  <b>Client:</b>
+  <%= @booking.client %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @booking.phone %>
+</p>
+
+<p>
+  <b>Obs:</b>
+  <%= @booking.obs %>
+</p>
+
+
+<%= link_to 'Edit', edit_booking_path(@booking) %> |
+<%= link_to 'Back', bookings_path %>

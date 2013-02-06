@@ -1,0 +1,17 @@
+<div class="divRecurso">Prédios<%= link_to image_tag("Add.png", :border=>0, :align => :right), new_building_path %></div>
+
+<table cellpadding="2" cellspacing="0">
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @buildings.each do |building| %>
+  <tr>
+    <td><%= link_to building.name, building %></td>
+    <td><%= link_to image_tag("Modify.png", :border=>0), edit_building_path(building) %></td>
+    <td><%= link_to image_tag("Delete.png", :border=>0), building, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>

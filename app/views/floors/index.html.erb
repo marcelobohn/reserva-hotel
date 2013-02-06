@@ -1,0 +1,19 @@
+<div class="divRecurso">Andares<%= link_to image_tag("Add.png", :border=>0, :align => :right), new_floor_path %></div>
+
+<table cellpadding="2" cellspacing="0">
+  <tr>
+    <th>Name</th>
+    <th>Building</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @floors.each do |floor| %>
+  <tr>
+    <td><%= link_to floor.name, floor %></td>
+    <td><%= Building.find(floor.building_id).name %></td>
+    <td><%= link_to image_tag("Modify.png", :border=>0), edit_floor_path(floor) %></td>
+    <td><%= link_to image_tag("Delete.png", :border=>0), floor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>

@@ -1,0 +1,25 @@
+<%= simple_form_for(@room) do |f| %>
+  <% if @room.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@room.errors.count, "error") %> prohibited this room from being saved:</h2>
+
+      <ul>
+      <% @room.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <%= f.input :name %>  
+  <%= f.label :floor_id %>
+  <%= f.collection_select(:floor_id, Floor.all, :id, :name) %>  <br />
+  <%= f.label :type_room_id %>
+  <%= f.collection_select(:type_room_id, TypeRoom.all, :id, :name) %>  <br />
+  <div class="field">
+    <%= f.label :air_conditioning %><br />
+    <%= f.check_box :air_conditioning %>
+  </div>
+  <%= f.input :beds %>  
+  <%= f.button :submit %> 
+<% end %>
