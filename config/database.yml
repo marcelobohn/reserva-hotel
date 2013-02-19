@@ -41,15 +41,15 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: hotel_test
+  database: hotel
   pool: 5
-  username: hotel
-  password:
+  username: marcelo
+  password: marcelo
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: hotel_production
+  database: hotel
   pool: 5
-  username: hotel
-  password:
+  username: marcelo
+  password: marcelo
