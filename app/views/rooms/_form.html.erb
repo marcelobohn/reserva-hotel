@@ -13,7 +13,11 @@
  
   <%= f.input :name %>  
   <%= f.label :floor_id %>
-  <%= f.collection_select(:floor_id, Floor.all, :id, :name) %>  <br />
+  <%= #f.collection_select(:floor_id, Floor.all, :id, :name ) 
+  %>  
+  <%= #f.select("room","floor_id", Floor.all.collect{|c| [c.name, c.id]} ) 
+  %>
+  <%= f.select(:floor_id, Floor.all.collect{|c| [c.name + ' - ' + Building.find(c.building_id).name, c.id]} ) %> <br />
   <%= f.label :type_room_id %>
   <%= f.collection_select(:type_room_id, TypeRoom.all, :id, :name) %>  <br />
   <div class="field">

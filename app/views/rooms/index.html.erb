@@ -14,7 +14,7 @@
 <% @rooms.each do |room| %>
   <tr>
     <td><%= link_to room.name, room %></td>
-    <td><%= room.floor.name %></td>
+    <td><%= room.floor.name + ' - [' + Building.find(room.floor.building_id).name + ']' %></td>
     <td><%= room.type_room.name %></td>
     <td><%= room.air_conditioning %></td>
     <td><%= room.beds %></td>
