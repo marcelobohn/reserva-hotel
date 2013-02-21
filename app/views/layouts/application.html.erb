@@ -3,7 +3,7 @@
 <head>
   <title>Hotel</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "application" %>  
   <%= javascript_include_tag :defaults, "jquery.min", "jquery-ui.min" %>   
   <%= javascript_include_tag :defaults, 'jquery.ui.datepicker-pt-BR' %>
   <%= csrf_meta_tags %>
@@ -19,13 +19,19 @@
 		<ul id="menu">
 			<li><%= link_to "Início", {:controller => "home", :action => "index"} %></li>
 			<li><%= link_to "Visão reservas", {:controller => "view_booking"} %></li>
-			<li><%= link_to "Prédios", buildings_path %></li>
-			<li><%= link_to "Andares", floors_path %></li>
-			<li><%= link_to "Tipos de quarto", type_rooms_path %></li>
-			<li><%= link_to "Quartos", rooms_path %></li>
-			<li><%= link_to "Reservas", bookings_path %></li>
-			<li><%= link_to "Registros", registries_path %></li>
+			<li><%= link_to "Lista Reservas", bookings_path %></li>
 		</ul>
+		<hr />
+		<%= javascript_tag "function mostra() { document.getElementById('divCadastro').style.visibility = 'visible';  }"  %>
+		<%= button_to_function "Mostra cadastros", "mostra()", :class => "ok" %>
+		<div id="divCadastro">
+			<ul id="menu">
+				<li><%= link_to "Prédios", buildings_path %></li>
+				<li><%= link_to "Andares", floors_path %></li>
+				<li><%= link_to "Tipos de quarto", type_rooms_path %></li>
+				<li><%= link_to "Quartos", rooms_path %></li>
+			</ul>
+		</div>
 	</div>
 	<div id="divConteudo">
 		<%= yield %>

@@ -8,11 +8,18 @@
 <% data_ini = params[:data_ini].to_i.zero? ? Time.now().strftime('%Y-%m-%d') : params[:data_ini] %>
 <% data_fim = params[:data_fim].to_i.zero? ? Time.now().strftime('%Y-%m-%d') : params[:data_fim] %>
 
-<% "Data da listagem: "  + data_ini + " até " + data_fim %><br />
+<br />
 <% button_to_function "Mensagem direta", "alert('Hello world!')", :class => "ok" %>
 <% button_to_function "Muda valor", "troca()", :class => "ok" %>
-<% link_to "Muda valor", "/busca" %>
-
+<%= link_to "Hoje", "/view_booking", :class => "botao" %>
+<% fim = Time.now() + 7.days%> | 
+<%= link_to "7 dias", "/view_booking?utf8=✓&data_ini=#{Time.now().strftime('%Y-%m-%d')}&data_fim=#{fim.strftime('%Y-%m-%d')}&commit=Atualizar", :class => "botao" %>
+<% fim = Time.now() + 14.days%> | 
+<%= link_to "14 dias", "/view_booking?utf8=✓&data_ini=#{Time.now().strftime('%Y-%m-%d')}&data_fim=#{fim.strftime('%Y-%m-%d')}&commit=Atualizar", :class => "botao" %>
+<% fim = Time.now() + 28.days%> | 
+<%= link_to "28 dias", "/view_booking?utf8=✓&data_ini=#{Time.now().strftime('%Y-%m-%d')}&data_fim=#{fim.strftime('%Y-%m-%d')}&commit=Atualizar", :class => "botao" %>
+<br />
+<br />
 <% a = Booking.new.get_vagas(data_ini, data_fim) %>
 <div id="divLista_quarto">
 <% last = 0 %>
@@ -32,7 +39,7 @@
                        :room_id => room['id'] %>
 
 		<%= link_to room['name'], new_booking_path(:room_id => room['id'], :entry => data_ini, :exit => data_fim) if room['booking_count'].to_i.zero? %>
-		<%= link_to room['name'], edit_booking_path(Booking.find(room['booking_id'])) unless room['booking_count'].to_i.zero? %>
+		<%= link_to room['name'] + ' - ' + room['booking_count'] , edit_booking_path(Booking.find(room['booking_id'])) unless room['booking_count'].to_i.zero? %>
 		<% room['floor_id'] %>
 	</div>
 <% end %>

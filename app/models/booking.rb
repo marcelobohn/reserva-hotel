@@ -1,6 +1,7 @@
 class Booking < ActiveRecord::Base
   belongs_to :room
   attr_accessible :client, :entry, :exit, :obs, :phone, :room_id
+  validates_presence_of :client, :phone
 
   def get_vagas(data_ini=0,data_fim=0)
   	data_ini = data_ini.to_i.zero? ? Time.now().strftime('%Y-%m-%d') : data_ini
@@ -21,7 +22,9 @@ from rooms r
 left join floors f on f.id = r.floor_id
 left join bookings b on r.id = b.room_id and 
 ('#{data_ini}' between cast(b.entry as date) and cast(b.exit as date) 
-or '#{data_fim}' between cast(b.entry as date) and cast(b.exit as date))
+or '#{data_fim}' between cast(b.entry as date) and cast(b.exit as date)
+or cast(b.entry as date) between '#{data_ini}' and '#{data_fim}'
+or cast(b.exit as date) between '#{data_ini}' and '#{data_fim}')
 group by r.id, r.name, r.floor_id, f.building_id
 order by building_id, floor_id}
 
