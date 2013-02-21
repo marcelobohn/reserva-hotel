@@ -95,7 +95,13 @@ th {
   padding: 10px;
   border-left: 2px solid gray;  
 }
-
+.divQuebra {
+  clear: both;
+}
+#divLista_quarto {
+  /*border: 1px solid black;  */
+  width: 840px;
+}
 #divCorpo {
   margin: auto;
 }
@@ -120,7 +126,6 @@ th {
   padding: 10px;
   border-right: 0px solid silver;
 }
-
 #divConteudo {
   float: left;
   padding-top: 10px;

@@ -14,8 +14,13 @@
 <% link_to "Muda valor", "/busca" %>
 
 <% a = Booking.new.get_vagas(data_ini, data_fim) %>
-<div id="lista_quarto">
+<div id="divLista_quarto">
+<% last = 0 %>
 <% a.each do |room| %>
+	<% if last != room['floor_id'] and last != 0 %>
+		<% room['floor_id'] %> <div class='divQuebra'></div>
+	<% end %>
+	<% last = room['floor_id'] %>
 	<div class=<%= room['booking_count'].to_i > 0 ? "room_box_ocupped" : "room_box_free" %> > 
 		<% link_to room['name'] + ' [' + room['booking_count']  + ']', Room.find(room['id']) %>
 		<% link_to room['name'] + ' [' + room['booking_count']  + ']', new_booking_path, 'data-popup' => true %>
@@ -25,8 +30,10 @@
                        :method => :post, 
                        :action => "create"},
                        :room_id => room['id'] %>
+
 		<%= link_to room['name'], new_booking_path(:room_id => room['id'], :entry => data_ini, :exit => data_fim) if room['booking_count'].to_i.zero? %>
 		<%= link_to room['name'], edit_booking_path(Booking.find(room['booking_id'])) unless room['booking_count'].to_i.zero? %>
+		<% room['floor_id'] %>
 	</div>
 <% end %>
 </div>
