@@ -1,4 +1,11 @@
+<%= form_tag({:action => 'index'}, {:method => :get}) do %>
+  <%= label_tag "Nome do cliente: " %>
+  <%= text_field_tag "nome_cliente", "", options = {:size => "10"} %>
+    <%= submit_tag "Pesquisar" %>
+<% end %>
+
 <div class="divRecurso">Reservas<%= link_to image_tag("Add.png", :border=>0, :align => :right), new_booking_path %></div>
+
 
 <table cellpadding="2" cellspacing="0">
   <tr>
@@ -7,6 +14,7 @@
     <th>Saída</th>
     <th>Cliente</th>
     <th>Telefone</th>
+    <th>Valor</th>
     <th>Obs</th>
     <th></th>
     <th></th>
@@ -19,6 +27,7 @@
     <td><%= booking.exit.strftime("%d/%m/%Y") %></td>
     <td><%= booking.client %></td>
     <td><%= booking.phone %></td>
+    <td><%= booking.value_entry %></td>
     <td><%= booking.obs %></td>
     <td><%= link_to image_tag("Modify.png", :border=>0), edit_booking_path(booking) %></td>
     <td><%= link_to image_tag("Delete.png", :border=>0), booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>

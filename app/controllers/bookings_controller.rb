@@ -3,6 +3,7 @@ class BookingsController < ApplicationController
   # GET /bookings.json
   def index
     @bookings = Booking.all
+    @bookings = Booking.find_all_by_client(params[:nome_cliente]) if params[:nome_cliente].to_s != ""
 
     respond_to do |format|
       format.html # index.html.erb

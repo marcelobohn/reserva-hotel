@@ -1,3 +1,7 @@
+<!-- deve ser organizado o código -->
+
+<%= javascript_tag "  $(function() { $( \"#data_ini\" ).datepicker(); $( \"#data_fim\" ).datepicker(); });" %>
+
 <%= form_tag({:action => 'index'}, {:method => :get}) do %>
   <%= label_tag "Data da pesquisa: " %>
   <%= text_field_tag "data_ini", params[:data_ini].to_i.zero? ? Time.now().strftime('%d-%m-%Y') : params[:data_ini], options = {:size => "10"} %> até 

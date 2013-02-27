@@ -1,0 +1,35 @@
+.room_box_free, .room_box_ocupped {
+  width: 100px;
+  margin: 2px;
+  text-align: center;
+  float: left;
+}
+.room_box_free a:link, .room_box_ocupped a:link  {
+  TEXT-DECORATION: none;
+  height: 50px;
+  display: block;
+  padding: 0px;
+  background-color: white;
+  border-radius: 4px;  
+  border: solid black 1px;
+}
+.room_box_free a:visited  {
+  color: black;
+}
+.room_box_free a:hover, .room_box_ocupped a:hover {
+  border: solid black 1px;
+  TEXT-DECORATION: none;
+  background-color: white;
+}
+.room_box_ocupped a:link, .room_box_ocupped a:visited {
+  border: solid black 1px;
+  background-color: #F78181;
+  color: black;
+}
+.room_box_ocupped a:hover {
+  color: red;
+  background-color: #D8D8D8;
+}
+.room_box_free a:hover {
+  background-color: #58FA58;
+}

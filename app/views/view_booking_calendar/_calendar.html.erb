@@ -1,0 +1,35 @@
+<style type='text/css'>
+	#calendar {
+		width: 500px;
+		margin: 0 auto;
+		}
+</style>
+
+<script type='text/javascript'>
+
+	$(document).ready(function() {
+	
+		var date = new Date();
+		var d = date.getDate();
+		var m = date.getMonth();
+		var y = date.getFullYear();
+		
+		$('#calendar').fullCalendar({
+			editable: true,
+			events: [
+				{
+					title: 'Marcelo',
+					start: new Date(y, m, 1)
+				},
+				{
+					id: 222,
+					title: "Carlos",
+					start: new Date(y, m, 10),
+					end: new Date(y, m, 20),
+					url: "http://yahoo.com/"
+				}
+			]
+		});
+		
+	});
+</script>

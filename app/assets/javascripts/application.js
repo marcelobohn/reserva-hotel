@@ -18,3 +18,4 @@ function troca()
 { 
 	document.getElementById('lista_quarto').innerHTML = "teste"
 }
+

@@ -1,0 +1,10 @@
+<!-- Probably move the stylesheet to you layout. Also make sure you include the javascript. -->
+<%= stylesheet_link_tag "event_calendar" %>
+
+<%= form_tag({:action => 'index'}, {:method => :get}) do %>
+  <%= label_tag "Selecione o quarto: " %>
+  <%= select_tag "room", options_for_select(Room.find(:all).collect{|star| [star.name, star.id]}, :selected => params[:room])  %> 
+  <%= submit_tag "Atualizar" %>
+<% end %>
+
+<%= raw(event_calendar) %>

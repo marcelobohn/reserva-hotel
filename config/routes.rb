@@ -1,5 +1,10 @@
 Hotel::Application.routes.draw do
 
+  get "report_month_occupation/index"
+
+#  match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
+  match '/calendar(/:year(/:month(/:room)))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/, :room =>/\d{1,9}/}
+
   get "home/index"
 
   root :to => "home#index"
@@ -13,6 +18,7 @@ Hotel::Application.routes.draw do
   resources :view_booking do
     get :teste, :on => :member
   end
+  resources :view_booking_calendar
 
   get '/busca', :to => 'view_booking#busca'
   post '/busca', :to => 'view_booking#busca'

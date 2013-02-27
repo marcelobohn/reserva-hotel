@@ -1,0 +1,31 @@
+table {
+  border-left: 2px solid gray;  
+}
+td {
+  border-right: 1px dashed silver;
+  border-bottom: 1px dashed silver;
+  padding: 5px;
+}
+th {
+  border-bottom: 1px solid black;
+  background-color: #E6E6E6;
+}
+
+.simple_form label {  
+  float: left;  
+  width: 100px;  
+  text-align: right;  
+  margin: 2px 10px;  
+}  
+  
+.simple_form div.input {  
+  margin-bottom: 10px;  
+}  
+  
+.simple_form div.boolean, .simple_form input[type='submit'] {  
+  margin-left: 120px;  
+}  
+.simple_form div.boolean label {  
+  float: none;  
+  margin: 0;  
+} 
