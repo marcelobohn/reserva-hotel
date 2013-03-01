@@ -1,0 +1,9 @@
+<% button_to_function "Mensagem direta", "alert('Hello world!')", :class => "ok" %>
+<% button_to_function "Muda valor", "troca()", :class => "ok" %>
+<%= link_to "Hoje", "/view_booking", :class => "botao" %>
+<% fim = Time.now() + 7.days%> | 
+<%= link_to "7 dias", "/view_booking?utf8=✓&data_ini=#{Time.now().strftime('%d/%m/%Y')}&data_fim=#{fim.strftime('%d/%m/%Y')}&commit=Atualizar", :class => "botao" %>
+<% fim = Time.now() + 14.days%> | 
+<%= link_to "14 dias", "/view_booking?utf8=✓&data_ini=#{Time.now().strftime('%d/%m/%Y')}&data_fim=#{fim.strftime('%d/%m/%Y')}&commit=Atualizar", :class => "botao" %>
+<% fim = Time.now() + 28.days%> | 
+<%= link_to "28 dias", "/view_booking?utf8=✓&data_ini=#{Time.now().strftime('%d/%m/%Y')}&data_fim=#{fim.strftime('%d/%m/%Y')}&commit=Atualizar", :class => "botao" %>

@@ -5,8 +5,10 @@ class Booking < ActiveRecord::Base
   validates_presence_of :client, :phone
 
   def get_vagas(data_ini=0,data_fim=0)
-  	data_ini = data_ini.to_i.zero? ? Time.now().strftime('%Y-%m-%d') : data_ini
-  	data_fim = data_fim.to_i.zero? ? Time.now().strftime('%Y-%m-%d') : data_fim
+    # data_ini = data_ini.to_i.zero? ? Time.now().strftime('%Y-%m-%d') : data_ini
+    # data_fim = data_fim.to_i.zero? ? Time.now().strftime('%Y-%m-%d') : data_fim
+    data_ini = data_ini.to_i.zero? ? Time.now().strftime('%Y-%m-%d') : Date.parse(data_ini).strftime("%Y-%m-%d")
+    data_fim = data_fim.to_i.zero? ? Time.now().strftime('%Y-%m-%d') : Date.parse(data_fim).strftime("%Y-%m-%d")
     sql = %{select r.id, r.name, max(b.id) booking_id, count(b.id) booking_count, r.floor_id, f.building_id
             from rooms r 
             left join floors f on f.id = r.floor_id
@@ -23,12 +25,14 @@ class Booking < ActiveRecord::Base
   def name
     client
   end
-
   before_save :update_dates
 
   def update_dates
     self.start_at = self.entry
     self.end_at = self.exit
   end
+
+# Booking.where("entry >= '2013-02-01' and exit <= '2013-02-28'")
+# Booking.where(:entry => '2013-02-01'..'2013-02-28')
 
 end

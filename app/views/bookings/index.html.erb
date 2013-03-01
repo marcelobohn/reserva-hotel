@@ -1,7 +1,9 @@
 <%= form_tag({:action => 'index'}, {:method => :get}) do %>
   <%= label_tag "Nome do cliente: " %>
   <%= text_field_tag "nome_cliente", "", options = {:size => "10"} %>
-    <%= submit_tag "Pesquisar" %>
+  <%= label_tag "Quarto: " %>
+  <%= select_tag "room", options_for_select(Room.find(:all).collect{|star| [star.name, star.id]}, :selected => params[:room]), :include_blank => true  %> 
+  <%= submit_tag "Pesquisar" %>
 <% end %>
 
 <div class="divRecurso">Reservas<%= link_to image_tag("Add.png", :border=>0, :align => :right), new_booking_path %></div>
