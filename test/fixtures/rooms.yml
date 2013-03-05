@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  floor: 
-  type_room: 
+  name: 101
+  floor: 1
+  type_room: 1
   air_conditioning: false
   beds: 1
 
 two:
-  name: MyString
-  floor: 
-  type_room: 
+  name: 102
+  floor: 1
+  type_room: 1
   air_conditioning: false
   beds: 1

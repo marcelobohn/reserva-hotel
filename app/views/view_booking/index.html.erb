@@ -1,43 +1,19 @@
+<%= render :partial => "hint_view"  %>
+
 <%= javascript_tag "  $(function() { $( \"#data_ini\" ).datepicker(); $( \"#data_fim\" ).datepicker(); });" %>
+
 <%= render 'filtro' %>
 
-<% #data_ini = params[:data_ini].to_i.zero? ? Time.now().strftime('%Y-%m-%d') : params[:data_ini] 
-%>
-<% #data_fim = params[:data_fim].to_i.zero? ? Time.now().strftime('%Y-%m-%d') : params[:data_fim] 
-%>
-<% data_ini = params[:data_ini].to_i.zero? ? Time.now().strftime('%d-%m-%Y') : params[:data_ini] 
-%>
-<% data_fim = params[:data_fim].to_i.zero? ? Time.now().strftime('%d-%m-%Y') : params[:data_fim] 
-%>
+<% data_ini = params[:data_ini].to_i.zero? ? Time.now().strftime('%d-%m-%Y') : params[:data_ini] %>
+<% data_fim = params[:data_fim].to_i.zero? ? Time.now().strftime('%d-%m-%Y') : params[:data_fim] %>
 <br />
 
 <%= render 'atalho' %>
 <br />
 <br />
 
-<% a = Booking.new.get_vagas(data_ini, data_fim) %>
 <div id="divLista_quarto">
-<% last = 0 %>
-<% a.each do |room| %>
-	<% if last != room['floor_id'] and last != 0 %>
-		<% room['floor_id'] %> <div class='divQuebra'></div>
-	<% end %>
-	<% last = room['floor_id'] %>
-	<div class=<%= room['booking_count'].to_i > 0 ? "room_box_ocupped" : "room_box_free" %> > 
-		<% link_to room['name'] + ' [' + room['booking_count']  + ']', Room.find(room['id']) %>
-		<% link_to room['name'] + ' [' + room['booking_count']  + ']', new_booking_path, 'data-popup' => true %>
-		<% link_to room['name'] + ' [' + room['booking_count']  + ']', {:controller => :bookings, :action => :new} %>
-		<% link_to room['name'] + ' [' + room['booking_count']  + ']', new_booking_path %>
-		<% link_to 'Tag it!', {:controller => "bookings", 
-                       :method => :post, 
-                       :action => "create"},
-                       :room_id => room['id'] %>
-
-		<%= link_to room['name'], new_booking_path(:room_id => room['id'], :entry => data_ini, :exit => data_fim) if room['booking_count'].to_i.zero? %>
-		<%= link_to room['name'] + ' - ' + room['booking_count'] , edit_booking_path(Booking.find(room['booking_id'])) unless room['booking_count'].to_i.zero? %>
-		<% room['floor_id'] %>
-	</div>
-<% end %>
+<%= raw ocu %>
 </div>
 
 <% request.path_parameters %><br />

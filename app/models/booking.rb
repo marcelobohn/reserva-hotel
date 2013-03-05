@@ -5,8 +5,6 @@ class Booking < ActiveRecord::Base
   validates_presence_of :client, :phone
 
   def get_vagas(data_ini=0,data_fim=0)
-    # data_ini = data_ini.to_i.zero? ? Time.now().strftime('%Y-%m-%d') : data_ini
-    # data_fim = data_fim.to_i.zero? ? Time.now().strftime('%Y-%m-%d') : data_fim
     data_ini = data_ini.to_i.zero? ? Time.now().strftime('%Y-%m-%d') : Date.parse(data_ini).strftime("%Y-%m-%d")
     data_fim = data_fim.to_i.zero? ? Time.now().strftime('%Y-%m-%d') : Date.parse(data_fim).strftime("%Y-%m-%d")
     sql = %{select r.id, r.name, max(b.id) booking_id, count(b.id) booking_count, r.floor_id, f.building_id
@@ -18,7 +16,7 @@ class Booking < ActiveRecord::Base
             or cast(b.entry as date) between '#{data_ini}' and '#{data_fim}'
             or cast(b.exit as date) between '#{data_ini}' and '#{data_fim}')
             group by r.id, r.name, r.floor_id, f.building_id
-            order by building_id, floor_id}
+            order by building_id, floor_id, id}
     return ActiveRecord::Base.connection.execute(sql).to_a
   end  
 

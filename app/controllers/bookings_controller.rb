@@ -2,12 +2,9 @@ class BookingsController < ApplicationController
   # GET /bookings
   # GET /bookings.json
   def index
-    @bookings = Booking.all
-    # @bookings = Booking.find_all_by_client(params[:nome_cliente]) if params[:nome_cliente].to_s != ""
-    @bookings = Booking.where("client like '#{params[:nome_cliente]}%'") if params[:nome_cliente]
-    @bookings = Booking.where("room_id = #{params[:room]}") if params[:room].to_s != ""
-    @bookings = Booking.where("client like '#{params[:nome_cliente]}%'").where("room_id = #{params[:room]}") if params[:room].to_s != "" and params[:nome_cliente]
-
+    @bookings = Booking.paginate(:per_page => 10, :page => params[:page]||1)
+    @bookings = @bookings.where("client like '#{params[:nome_cliente]}%'") if params[:nome_cliente]
+    @bookings = @bookings.where("room_id = #{params[:room]}") if params[:room].to_s != ""
 
     respond_to do |format|
       format.html # index.html.erb

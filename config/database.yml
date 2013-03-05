@@ -41,7 +41,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: hotel
+  database: hotel_teste
   pool: 5
   username: marcelo
   password: marcelo

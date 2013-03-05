@@ -1,17 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  room: 
+  room: 1
   entry: 2013-01-23 15:22:43
   exit: 2013-01-23 15:22:43
-  client: MyString
-  phone: MyString
-  obs: MyString
+  client: Marcelo
+  phone: 555
+  obs: tete 1
 
 two:
-  room: 
+  room: 2
   entry: 2013-01-23 15:22:43
   exit: 2013-01-23 15:22:43
-  client: MyString
-  phone: MyString
-  obs: MyString
+  client: Carlos
+  phone: 666
+  obs: teste 2

@@ -1,6 +1,6 @@
 <%= form_tag({:action => 'index'}, {:method => :get}) do %>
   <%= label_tag "Nome do cliente: " %>
-  <%= text_field_tag "nome_cliente", "", options = {:size => "10"} %>
+  <%= text_field_tag "nome_cliente", params["nome_cliente"], options = {:size => "10"} %>
   <%= label_tag "Quarto: " %>
   <%= select_tag "room", options_for_select(Room.find(:all).collect{|star| [star.name, star.id]}, :selected => params[:room]), :include_blank => true  %> 
   <%= submit_tag "Pesquisar" %>
@@ -36,3 +36,4 @@
   </tr>
 <% end %>
 </table>
+<%= will_paginate @bookings %>

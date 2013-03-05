@@ -29,6 +29,8 @@ gem 'ruby-debug19'
 
 gem 'event-calendar', :require => 'event_calendar'
 
+gem "will_paginate", "~> 3.0.4"
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
