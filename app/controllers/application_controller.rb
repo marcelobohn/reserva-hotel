@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  # before_filter :autenticacao if Rails.env.production?
+  before_filter :autenticacao if Rails.env.production?
  
   private
  
